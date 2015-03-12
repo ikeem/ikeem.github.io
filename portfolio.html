@@ -1,0 +1,50 @@
+<!doctxpe html>
+<html>
+    <head>
+        <title>Ikeem World</title>
+        <script src="bower_components/vendee/vendee.js"></script>
+        <LINK REL=StyleSheet HREF="style.css" TYPE="text/css" MEDIA=screen>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1>My Work</h1>
+            <ul id='portfolio'class='portfolio-list'>
+               <li></li>
+               <li></li>
+               <li></li>
+               
+            </ul>
+            
+        </div>
+        <header>
+        </header>
+        <main>
+            
+            <h3></h3>
+            
+        </main>
+        <footer>
+           
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var vendee = window.opspark.vendee;
+            
+                vendee.load.json('.projects.json').then(function(data) {
+                    data.projects.forEach(function(project){
+                        $("#portfolio").append('<li><a href="' + project.name + '/">' + project.title + ' : ' + project.description + '</a></li>');
+                    });
+                });
+            
+            });
+        </script>
+    </body>
+</html>
