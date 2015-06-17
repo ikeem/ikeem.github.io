@@ -30,8 +30,8 @@ body a {
 .grid {
     margin: 0 auto;
     background: #272727;
-    max-width: 900px;
-    min-height: 600px;
+    max-width: 1000px;
+    min-height: 700px;
 }
 [class*='col-1-3'] {
     float: left;

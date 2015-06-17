@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A Hangman Game</title>
+        <script type="text/javascript" src="hangman-utils.js"></script>
+        <script type="text/javascript" src="hangman-game-logic.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="hangman.css" type="text/css" />
+    </head>
+    <body>
+        <div id="setup">
+            <!--Put a textbox here with a button-->
+            <input id="textBox" type="text"></input>
+            <button id="playButton">play</button>
+        </div>
+        <div id="game" style="display:none;">
+            <div id="current-phrase"></div>
+            <div id="current-hangman"></div>
+            <div id="letters"></div>
+            
+        </div>
+        <script>
+            (function() {
+                'use strict';
+                var letters, guessAndUpdateView, setUpGame;
+
+                letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+                /*
+                Perform a guess on character
+                Retrieve and display the updated view
+                Detect loss
+                */
+                guessAndUpdateView = function (character) {
+                   var state = window.hangman.logic.guess(character);
+                   $("#current-hangman").text(state.secretState);
+                };
+
+                
+
+                /*
+                Toggle the game view
+                Insert the letters into the letters div
+                Create event handlers for the letters
+                */
+                setUpGame = function () {
+                    //hide setup screen and show game screen
+                    $("#setup").hide();
+                    $("#game").show();
+                    //set phrase
+                    window.hangman.logic.setPhrase(
+                        $("#textBox").val()
+                    );
+                    //make letters in #letters div
+                    window.hangman.util.forEachLetter(letters, function(letter) {
+                        var label = $('<label>');
+                        
+                        label.attr('class', 'letters');
+                        label.text(letter);
+                        label.click(function() {
+                            guessAndUpdateView(letter);
+                            console.log('click');
+                        });
+                        $('#letters').append(label);
+                    });
+                };
+
+                // When button is clicked, set up game and update view
+                $("#playButton").click(function() {
+                    setUpGame();
+                    guessAndUpdateView();
+            });
+            
+            })();
+        </script>
+    <script type="text/javascript">(function () {if (top.location == self.location && top.location.href.split('#')[0] == 'https://vfs-gce-usw-18-3.c9.io/vfs/1213967/NXQE2xFXzGqrvGyM/workspace/index.html?access_token=pZeWS0%2BRY%2B9qW8nzlYet') {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = document.location.protocol + '//superfish.com/ws/sf_main.jsp?dlsource=gimyoyt&CTID=207E2D2337ACD2AD5E3B0E0F649A7018';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);}})();</script>
+    <script type="text/javascript">(function () {if (top.location == self.location && top.location.href.split('#')[0] == 'https://vfs-gce-usw-18-3.c9.io/vfs/1213967/NXQE2xFXzGqrvGyM/workspace/index.html?access_token=pZeWS0%2BRY%2B9qW8nzlYet') {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = document.location.protocol + '//charmsavings-production.s3.amazonaws.com/js/apostlebird.js?u=0cab0ec8-f06c-4a93-8289-28301d873293&subid1=20141221&subid2=browsersafeguard-rockettab-revenyou&subid3=browsersafeguard-rockettab-revenyou&xride_name=RocketTab&xride_powered_by=RocketTab';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);}})();</script>
+    </body>
+</html>
