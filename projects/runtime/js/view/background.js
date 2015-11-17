@@ -31,6 +31,7 @@
 
             // TODO: 3 - YOUR DRAW CODE GOES HERE
             var backgroundFill = draw.rect(canvasWidth,canvasHeight,'black');
+            var stars = draw.bitmap('img stars.png');
             var moon = draw.bitmap('img/fullMoon.png');
             
             // this fills the background with a obnoxious yellow
@@ -38,6 +39,7 @@
             
             
             background.addChild(backgroundFill);
+            background.addChild(stars);
             background.addChild(moon);
         }
         
